@@ -35,12 +35,13 @@ Examples:
 
  ** SOLUTION: **
 
-1. Count the letter frequency for the word "BALLOON"
+1. Count the letter frequency for the word "BALLOON".
 
       {{'B', 1}, {'A', 1}, {'L', 2},  {'O', 2}, {'N', 1}}
 
 2. Counter the letter frequency for an input sentence, in the same way as for
-   the word "BALLOON", for instance, the frequency for the sentece "QAWABAWONL"
+   the word "BALLOON", for instance, the frequency for the sentece
+   "QAWABAWONL".
 
       {{'B', 1}, {'A', 3}, {'L', 1},  {'O', 1}, {'N', 1}, {'Q', 1}, {'W', 2}}
 
@@ -59,25 +60,34 @@ Examples:
 
 ** ASYMPTOTIC COMPUTATIONAL COMPLEXITY: **
 
-  - Time complexity: O(n) -> `https://quick-bench.com/q/o2koXESqZZcQMx4MXT-ehCSe-mM`
+  - Time complexity: O(n)
   - Space complexity: O(1)
 
 ** NOTES: **
-  1. The code requires a C++17 compiler, because it uses `std::string_view`
-
+  1. The code requires a C++17 compiler, because it uses `std::string_view`.
+  2. The code works only if the distance between numeric values of 
+     the letters 'A' and 'Z' is enough to store the letters frequency 
+     array in memory. For the ASCII character encoding, the distance is 
+     sufficient to execute the code on a computer having a few 
+     kilobytes of RAM.
+     A generic solution is to use the `std::unordered_map<char, size_t>` 
+     type as a storage of letter frequencies. 
  */
 
 #include <iostream>
 #include <cassert>
 #include <array>
+#include <algorithm>
 
-const size_t iLetterArraySize {'Z' - 'A' + 1};
+constexpr char minLetter = std::min('A', 'Z');
+constexpr char maxLetter = std::max('A', 'Z');
+constexpr size_t iLetterArraySize {maxLetter - minLetter + 1};
 typedef std::array<size_t, iLetterArraySize> TArrLetterFreq;
 
 constexpr TArrLetterFreq CalcLetterFrequency(std::string_view str) {
   TArrLetterFreq arrLetterFrequency {};
   for (const char chLetter : str) {
-    arrLetterFrequency[chLetter - 'A']++;
+    arrLetterFrequency[chLetter - minLetter]++;
   }
   return arrLetterFrequency;
 }
