@@ -71,7 +71,8 @@ Examples:
      sufficient to execute the code on a computer having a few 
      kilobytes of RAM.
      A generic solution is to use the `std::unordered_map<char, size_t>` 
-     type as a storage of letter frequencies. 
+     type as a storage of letter frequencies, but in this case 
+     the solution will not be `constexpr`. 
  */
 
 #include <iostream>
