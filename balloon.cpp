@@ -1,5 +1,4 @@
 /*
-
 ** TASK: **
 
 A string S consisting of uppercase English letters is given. In one move we can
@@ -33,6 +32,7 @@ Examples:
   QAWABAWONL
 
 
+
  ** SOLUTION: **
 
 1. Count the letter frequency for the word "BALLOON".
@@ -58,22 +58,27 @@ Examples:
 
 4. Return the minimum multiplicity. In the example, it is 0.
 
+
+
 ** ASYMPTOTIC COMPUTATIONAL COMPLEXITY: **
 
-  - Time complexity: O(n)
-  - Space complexity: O(1)
+- Time complexity: O(n)
+- Space complexity: O(1)
+
+
 
 ** NOTES: **
-  1. The code requires a C++17 compiler, because it uses `std::string_view`.
-  2. The code works only if the distance between numeric values of 
-     the letters 'A' and 'Z' is enough to store the letters frequency 
-     array in memory. For the ASCII character encoding, the distance is 
-     sufficient to execute the code on a computer having a few 
-     kilobytes of RAM.
-     A generic solution is to use the `std::unordered_map<char, size_t>` 
-     type as a storage of letter frequencies, but in this case 
-     the solution will not be `constexpr`. 
- */
+
+1. The code requires a C++17 compiler, because it uses `std::string_view`.
+2. The code works only if the distance between numeric values of 
+   the letters 'A' and 'Z' is enough to store the letters frequency 
+   array in memory. For the ASCII character encoding, the distance is 
+   sufficient to execute the code on a computer having a few 
+   kilobytes of RAM.
+   A generic solution is to use the `std::unordered_map<char, size_t>` 
+   type as a storage of letter frequencies, but in this case 
+   the solution will not be `constexpr`. 
+*/
 
 #include <iostream>
 #include <cassert>
